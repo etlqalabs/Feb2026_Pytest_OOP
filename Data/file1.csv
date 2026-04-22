@@ -1,0 +1,6 @@
+s3://s3-feb-2026/empl_data/emp.csv
+
+bucket_name =  s3-feb-2026
+path : empl_data/emp.csv
+
+
