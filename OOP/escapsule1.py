@@ -10,7 +10,6 @@ class BankAccount:
         print("Balance:", self._balance)
         print("PIN:", self.__pin)
 
-
 class SavingsAccount(BankAccount):
     def __init__(self, owner, balance, pin, interest_rate):
         super().__init__(owner, balance, pin)
@@ -20,31 +19,17 @@ class SavingsAccount(BankAccount):
         print("\nInside Child Class:")
         print("Owner:", self.owner)         # accessible
         print("Balance:", self._balance)    # accessible (protected)
-        #print(self.__pin)  # ❌ This will fail due to name mangling
-
-        # Correct way to access mangled variable
-        print("PIN (via name mangling):", self._BankAccount__pin)
+        print("PIN:", self._BankAccount__pin)
 
 
-# Creating object
 sb = SavingsAccount("Hetu", 1000, 1234, 12)
 
-# Access within class
+print("Inside class...")
 sb.print_details()
 
-# Access within subclass
+print("Inside subclass...")
 sb.access_parent_data()
 
-print("\nOutside Class Access:")
-
-# Public - OK
-print("Owner:", sb.owner)
-
-# Protected - allowed but not recommended
-print("Balance:", sb._balance)
-
-# Private - will fail
-# print(sb.__pin)  AttributeError
-
-# Accessing private using name mangling
-print("PIN (via name mangling):", sb._BankAccount__pin)
+print(sb.owner)
+print(sb._balance)
+print(sb._BankAccount__pin)
